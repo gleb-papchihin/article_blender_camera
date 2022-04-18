@@ -37,7 +37,7 @@ type(camera_extra)
 
 На этом этапе, может показаться, что «bpy.data.cameras» и «bpy.data.objects» имеют одинаковые ключи. Но это не так.
 
-*Изображение развёрнутой камеры (Объект + начинка)* 
+![Вложенный объект](https://github.com/gleb-papchihin/article_blender_camera/blob/main/camera_nested.png)
 
 Мы видим, что внутри объекта «Camera» находится экземпляр «bpy.types.Camera» с названием «Camera». Для наглядности, поменяем название камеры на «MyCamera».
 
@@ -74,7 +74,7 @@ render.resolution_y = 1080
 
 Заметим, что эти настройки распространяются на все камеры.
 
-*Гифка с несколькими камерами, разрешение которых меняется*
+![Меняем разрешение](https://github.com/gleb-papchihin/article_blender_camera/blob/main/resolution.gif)
 
 
 ## Свойства камеры
@@ -91,7 +91,7 @@ camera = bpy.data.objects['Camera']
 camera.lens = 10
 ```
 
-*Изображение изменения фокусного расстояния*
+![Меняем фокусное расстояние](https://github.com/gleb-papchihin/article_blender_camera/blob/main/lens.gif)
 
 
 ### sensor_width & sensor_height
@@ -103,14 +103,12 @@ camera = bpy.data.objects['Camera']
 camera.sensor_width = 32
 ```
 
-*GIF: изменение размера сенсора*
-
 
 ### shift_x & shift_y
 
 Смысл этих свойств легче всего объяснить с помощью наглядного примера.
 
-*Гифка: изменение shift_x. Вид камеры*
+![Меняем смещение](https://github.com/gleb-papchihin/article_blender_camera/blob/main/shift.gif)
 
 Выше мы меняли shift_x и тем самым смещали объектив влево и вправво относительно направления камеры. Аналогичным образом работает shift_y, только смещение происходит вверх и вних.
 
@@ -143,9 +141,7 @@ world_to_camera_view(scene, camera, cube.location)
 
 В результате использования «world_to_camera_view» мы получичли 3 значения: координата по оси х, координата по оси y, дистанция до объекта.
 
-*Изображение: Система координат world_to_camera_view*
-
-*Изображение: matplotlib рисуем точку*
+![Проекция](https://github.com/gleb-papchihin/article_blender_camera/blob/main/world_to_camera_view.png)
 
 
 ## Наведение на объект
@@ -165,7 +161,7 @@ def track_to(
     constraint.target = target
 ```
 
-*GIF: Двигаем объект. Камера продолжает следить за ним*
+![track_to в действии](https://github.com/gleb-papchihin/article_blender_camera/blob/main/constraint.gif)
 
 Есть и другие интересные ограничения, которые можно вешать на объекты. Подробнее об этом можно прочитать в [документации](https://docs.blender.org/manual/en/latest/animation/constraints/index.html).
 
